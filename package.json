@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "dc": "docker-compose up -d mongodb && docker-compose up -d mongo-seed && docker-compose up -d web",
+    "dc-fresh": "docker-compose down && docker-compose up --build -d mongodb && docker-compose up --build -d mongo-seed && docker-compose up --build -d web"
   },
   "author": "",
   "license": "ISC",

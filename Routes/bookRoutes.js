@@ -19,7 +19,7 @@ let routes = function(Book){
             {
                 query.genre = req.query.genre
             }
-
+            console.log(req.query);
             Book.find(query, (err, books) => {
                 if (err)
                     res.status(500).send(err);

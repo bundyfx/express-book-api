@@ -3,7 +3,7 @@ const express = require('express'),
       bodyParser = require('body-parser');
 
 
-const db = mongoose.connect('mongodb://localhost/bookAPI');
+const db = mongoose.connect('mongodb://mongodb/bookAPI');
 const Book = require('./models/bookModel');
 const app = express();
 const port = process.env.PORT || 3000;
