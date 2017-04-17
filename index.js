@@ -1,9 +1,24 @@
 const express = require('express'),
       mongoose = require('mongoose'),
-      bodyParser = require('body-parser');
+      bodyParser = require('body-parser'),
+      containerized = require('containerized');
+
+// Checking to determine if this is being executed from with Docker. If so we assume the db name is 'mongodb' else localhost
+if (containerized()) {
+    var database = 'mongodb'
+} else {
+    var database = 'localhost'
+}
+
+let db;
+
+if (process.env.ENV == 'Test') {
+    db = mongoose.connect('mongodb://' + database + '/bookAPI_test');
+} else {
+    db = mongoose.connect('mongodb://' + database + '/bookAPI');
+}
 
 
-const db = mongoose.connect('mongodb://mongodb/bookAPI');
 const Book = require('./models/bookModel');
 const app = express();
 const port = process.env.PORT || 3000;
@@ -11,10 +26,9 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended:true }));
 app.use(bodyParser.json());
 
-bookRouter = require('./Routes/bookRoutes')(Book);
+bookRouter = require('./routes/bookRoutes')(Book);
 
 app.use('/api/books', bookRouter);
-// app.use('/api/authors', authorRouter);
 
 app.get('/', (req, res) => {
     res.send('welcome to my Book API lol')
@@ -23,3 +37,5 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
     console.log('running on port: ' + port)
 });
+
+module.exports = app;

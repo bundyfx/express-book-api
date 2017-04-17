@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
+    "mongo-up": "docker run -d -p 27017:27017 mongo && mongoimport --host localhost --db bookAPI --collection books --type json --file mongo-seed/init.json --jsonArray",
     "dc": "docker-compose up -d mongodb && docker-compose up -d mongo-seed && docker-compose up -d web",
     "dc-fresh": "docker-compose down && docker-compose up --build -d mongodb && docker-compose up --build -d mongo-seed && docker-compose up --build -d web"
   },
@@ -13,9 +14,17 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.1",
+    "containerized": "^1.0.2",
     "express": "^4.15.2",
     "gulp": "^3.9.1",
+    "gulp-mocha": "^4.3.0",
     "gulp-nodemon": "^2.2.1",
-    "mongoose": "^4.9.4"
+    "mongoose": "^4.9.4",
+    "should": "^11.2.1",
+    "sinon": "^2.1.0"
+  },
+  "devDependencies": {
+    "gulp-env": "^0.4.0",
+    "supertest": "^3.0.0"
   }
 }
