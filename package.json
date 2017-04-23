@@ -4,7 +4,7 @@
   "description": "Well you've come to the right place!",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "gulp test",
     "start": "node index.js",
     "mongo-up": "docker run -d -p 27017:27017 mongo && mongoimport --host localhost --db bookAPI --collection books --type json --file mongo-seed/init.json --jsonArray",
     "dc": "docker-compose up -d mongodb && docker-compose up -d mongo-seed && docker-compose up -d web",
