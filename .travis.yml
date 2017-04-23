@@ -13,7 +13,7 @@ env:
 before_script:
   - npm install -g gulp
 
-script: gulp
+script: gulp test
 
 before_install:
   - sudo rm /usr/local/bin/docker-compose

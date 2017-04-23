@@ -1,3 +1,5 @@
+![Build](https://travis-ci.org/bundyfx/express-book-api.svg?branch=master)
+
 ## Usage
 
 The API Endpoint is: *http://localhost:8000/api/Books*
