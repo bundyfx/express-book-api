@@ -3,6 +3,14 @@ const express = require('express'),
       bodyParser = require('body-parser'),
       containerized = require('containerized');
 
+
+const dd_options = {
+    'response_code':true,
+    'tags': ['app:book_api']
+};
+
+const connect_datadog = require('connect-datadog')(dd_options);
+
 // Checking to determine if this is being executed from with Docker. If so we assume the db name is 'mongodb' else localhost
 if (containerized()) {
     var database = 'mongodb'
@@ -23,8 +31,10 @@ const Book = require('./models/bookModel');
 const app = express();
 const port = process.env.PORT || 3000;
 
+
 app.use(bodyParser.urlencoded({ extended:true }));
 app.use(bodyParser.json());
+app.use(connect_datadog);
 
 bookRouter = require('./routes/bookRoutes')(Book);
 

@@ -1,5 +1,9 @@
 ## Usage
 
+The API Endpoint is: *http://localhost:8000/api/Books*
+
+*or port 3000 if used from within Docker*
+
 ### Docker
 
 Granted you have Docker installed.
@@ -22,8 +26,9 @@ This will start a MongoDB container and seed it with the required data.
 
 ### Components
 
-* MongoDB
-* NodeJS + Express
+* [MongoDB](link)
+* [NodeJS](link)
+* [Express](link)
 
 ### Status codes
 
@@ -39,3 +44,9 @@ These are general Web API related status codes but please see below for more inf
 
 If you want to work with an API you will want a tool that allows you to test and make API calls as you build. [Postman](https://www.getpostman.com/) makes this process super simple.
 You can make any sort of verb call from the interface and have immediate feedback to know how your API is functioning.
+
+### Tests
+
+There are only two simple tests to demonstrate the use of the testing and mocking frameworks.
+
+In order to run the tests, simply run `gulp test`.
