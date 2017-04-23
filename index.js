@@ -12,7 +12,7 @@ const dd_options = {
 const connect_datadog = require('connect-datadog')(dd_options);
 
 // Checking to determine if this is being executed from with Docker. If so we assume the db name is 'mongodb' else localhost
-if (containerized()) {
+if (containerized() || process.env.TRAVIS ) {
     var database = 'mongodb'
 } else {
     var database = 'localhost'
