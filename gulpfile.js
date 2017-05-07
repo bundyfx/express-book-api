@@ -23,6 +23,6 @@ gulp.task('test', () => {
     env({vars: {ENV:'Test'}});
 
     gulp.src('tests/*.js', {read: false})
-       .pipe(gulpMocha({reporter: 'nyan'}))
+       .pipe(gulpMocha())
 });
 
